@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Restaurant Order Flow Optimizer</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot"></span>
+      ORDER FLOW
+      <span class="sub">v1.0 · KDS</span>
+    </div>
+    <nav class="nav">
+      <a href="/" class="active">Home</a>
+      <a href="/order-entry.html">Entry</a>
+      <a href="/kitchen.html">Kitchen</a>
+      <a href="/foh.html">FOH</a>
+      <a href="/manager.html">Manager</a>
+    </nav>
+    <div class="connection">
+      <span class="pulse"></span>
+      <span class="state">Live</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Real-time order flow <br/>for a <span class="flame">hot</span> line.</h1>
+      <p>
+        One live source of truth for every ticket — dine-in, online, takeaway —
+        synced between the kitchen and the front of house over WebSockets in
+        under a second. Late tickets surface themselves. Managers see the floor
+        at a glance.
+      </p>
+
+      <div class="dash-grid">
+        <a href="/order-entry.html" class="dash-card">
+          <div class="icon">01 · Entry</div>
+          <h3>Order Entry</h3>
+          <p>Create tickets for any channel. POS, phone, and online orders all enter the same stream.</p>
+        </a>
+        <a href="/kitchen.html" class="dash-card">
+          <div class="icon">02 · Line</div>
+          <h3>Kitchen Display</h3>
+          <p>Tickets sorted by priority. Late ones pulse red. One tap to advance status.</p>
+        </a>
+        <a href="/foh.html" class="dash-card">
+          <div class="icon">03 · Floor</div>
+          <h3>Front of House</h3>
+          <p>See what's ready to run and which tables are still waiting. Close the loop on service.</p>
+        </a>
+        <a href="/manager.html" class="dash-card">
+          <div class="icon">04 · Ops</div>
+          <h3>Manager View</h3>
+          <p>Live counts, average ticket time, and the full log of what's moving through the line.</p>
+        </a>
+      </div>
+
+      <div class="feature-strip">
+        <div class="feature">
+          <div class="k">Sub-second sync</div>
+          <div class="v">WebSocket broadcasts push every state change to every screen the moment it happens.</div>
+        </div>
+        <div class="feature">
+          <div class="k">Priority-driven</div>
+          <div class="v">Tickets re-rank themselves when they approach or exceed their estimated prep time.</div>
+        </div>
+        <div class="feature">
+          <div class="k">Multi-channel</div>
+          <div class="v">Dine-in, online, and takeaway orders live in the same queue, color-coded by source.</div>
+        </div>
+        <div class="feature">
+          <div class="k">REST + WS</div>
+          <div class="v">Full REST API mirrors every WebSocket event so third-party POS integrations drop in cleanly.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
