@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Manager · Restaurant Order Flow</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot"></span>
+      ORDER FLOW
+      <span class="sub">v1.0 · MGR</span>
+    </div>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/order-entry.html">Entry</a>
+      <a href="/kitchen.html">Kitchen</a>
+      <a href="/foh.html">FOH</a>
+      <a href="/manager.html" class="active">Manager</a>
+    </nav>
+    <div class="connection">
+      <span class="pulse"></span>
+      <span class="state">Live</span>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-header">
+      <div>
+        <h1>Floor Overview</h1>
+        <p>Live service metrics and the full ticket log. Everything updates in real time as the line moves.</p>
+      </div>
+    </div>
+
+    <div class="stat-grid" id="stats"></div>
+
+    <div class="two-col">
+      <section class="panel">
+        <h2>Recent tickets</h2>
+        <div id="log" style="display: flex; flex-direction: column; gap: 10px; max-height: 620px; overflow-y: auto;"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Channel mix</h2>
+        <div class="channel-bars" id="channelMix"></div>
+
+        <h2 style="margin-top: 28px;">Status mix</h2>
+        <div class="channel-bars" id="statusMix"></div>
+      </section>
+    </div>
+  </main>
+
+  <script src="/js/shared.js"></script>
+  <script src="/js/manager.js"></script>
+</body>
+</html>
