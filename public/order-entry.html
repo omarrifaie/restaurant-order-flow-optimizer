@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Order Entry · Restaurant Order Flow</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot"></span>
+      ORDER FLOW
+      <span class="sub">v1.0 · KDS</span>
+    </div>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/order-entry.html" class="active">Entry</a>
+      <a href="/kitchen.html">Kitchen</a>
+      <a href="/foh.html">FOH</a>
+      <a href="/manager.html">Manager</a>
+    </nav>
+    <div class="connection">
+      <span class="pulse"></span>
+      <span class="state">Live</span>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-header">
+      <div>
+        <h1>New Order</h1>
+        <p>Create a ticket for any channel. It pushes live to the kitchen and FOH screens the moment you submit.</p>
+      </div>
+    </div>
+
+    <div class="form-panel">
+      <form id="orderForm">
+        <div class="form-grid">
+          <div>
+            <label for="channel">Channel</label>
+            <select id="channel" name="channel" required>
+              <option value="dine-in">Dine-in</option>
+              <option value="online">Online</option>
+              <option value="takeaway">Takeaway</option>
+            </select>
+          </div>
+
+          <div id="tableField">
+            <label for="tableNumber">Table #</label>
+            <input id="tableNumber" name="tableNumber" placeholder="e.g. 12" />
+          </div>
+
+          <div id="customerField" style="display:none">
+            <label for="customerName">Customer name</label>
+            <input id="customerName" name="customerName" placeholder="e.g. Maria G." />
+          </div>
+        </div>
+
+        <div class="section-title">Items</div>
+        <div id="items"></div>
+        <button type="button" class="ghost" id="addItem" style="margin-top: 6px">+ Add another item</button>
+
+        <div class="section-title">Kitchen notes</div>
+        <textarea id="notes" placeholder="Allergies, modifications, table timing, etc." rows="2"></textarea>
+
+        <div style="display:flex; gap: 10px; margin-top: 24px;">
+          <button type="submit" class="primary" id="submitBtn" style="flex:1">Send to kitchen</button>
+          <button type="button" class="ghost" id="sampleBtn">Fill sample</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script src="/js/shared.js"></script>
+  <script src="/js/order-entry.js"></script>
+</body>
+</html>
