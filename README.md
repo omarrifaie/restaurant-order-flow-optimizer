@@ -10,15 +10,15 @@ front of house in sub-second sync across **dine-in**, **online**, and
 ## Why
 
 In a busy restaurant, miscommunication between FOH and the kitchen is
-expensive — tickets get lost, hot plates sit under the heat lamp, and
+expensive as tickets get lost, hot plates sit under the heat lamp, and
 servers don't know what's ready. This project centralizes every order
 into one live feed with three views:
 
-- **Kitchen Display (KDS)** — sorts tickets by priority, highlights
+- **Kitchen Display (KDS)** - sorts tickets by priority, highlights
   late ones in red, and lets the line advance them with one tap.
-- **Front of House** — shows what's ready to run and what's still
+- **Front of House** - shows what's ready to run and what's still
   cooking, so servers can set table expectations.
-- **Manager** — live counts, channel mix, average ticket resolution
+- **Manager** - live counts, channel mix, average ticket resolution
   time, and the full log of what's moved through the line.
 
 Plus an **Order Entry** screen that simulates the POS feeding tickets
@@ -42,7 +42,7 @@ into the stream.
 ```
 
 - **Transport:** WebSocket (`ws` library) for push, REST for integrations.
-- **Storage:** in-memory `Map` — swap for Redis/Postgres without
+- **Storage:** in-memory `Map` - swap for Redis/Postgres without
   touching the UI.
 - **Priority:** derived on every read from elapsed time vs. the ticket's
   estimated prep. Re-broadcast every 15 s so cards tick into *high* and
@@ -65,11 +65,11 @@ Then open **http://localhost:3000** in your browser.
 For the full experience, open each dashboard in its own tab or window
 so you can see the WebSocket sync in action:
 
-- `/` — landing page with navigation
-- `/order-entry.html` — create tickets
-- `/kitchen.html` — kitchen display
-- `/foh.html` — front of house
-- `/manager.html` — live metrics
+- `/` - landing page with navigation
+- `/order-entry.html` - create tickets
+- `/kitchen.html` - kitchen display
+- `/foh.html` - front of house
+- `/manager.html` - live metrics
 
 Click **Fill sample** on the Order Entry page a few times, then watch
 the tickets appear on every other screen instantly.
@@ -144,4 +144,4 @@ actually deploy:
 
 ---
 
-Built by Omar Rifaie — [github.com/](#) · [linkedin.com/](#)
+Built by Omar Rifaie - [github.com/omarrifaie](#) · [linkedin.com/in/omar-rifaie-](#)
