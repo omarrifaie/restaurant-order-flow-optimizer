@@ -1,5 +1,7 @@
 # Restaurant Order Flow Optimizer
 
+> *Note: This repository is a cleaned-up portfolio rebuild of an internal tool I originally developed at El Senor de Los Tacos in 2024.*
+
 A real-time order dashboard for a multi-channel restaurant operation.
 Built with Node.js, Express, and WebSockets to keep the kitchen and the
 front of house in sub-second sync across **dine-in**, **online**, and
