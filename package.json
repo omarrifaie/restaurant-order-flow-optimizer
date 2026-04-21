@@ -1,0 +1,27 @@
+{
+  "name": "restaurant-order-flow-optimizer",
+  "version": "1.0.0",
+  "description": "Real-time restaurant order dashboard tracking dine-in, online, and takeaway orders across multiple channels, with sub-second WebSocket updates between kitchen and front-of-house staff.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "restaurant",
+    "pos",
+    "kitchen-display",
+    "websockets",
+    "real-time",
+    "order-management"
+  ],
+  "author": "Omar Rifaie",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2",
+    "ws": "^8.17.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
