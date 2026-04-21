@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kitchen Display · Restaurant Order Flow</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot"></span>
+      ORDER FLOW
+      <span class="sub">v1.0 · KITCHEN</span>
+    </div>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/order-entry.html">Entry</a>
+      <a href="/kitchen.html" class="active">Kitchen</a>
+      <a href="/foh.html">FOH</a>
+      <a href="/manager.html">Manager</a>
+    </nav>
+    <div class="connection">
+      <span class="pulse"></span>
+      <span class="state">Live</span>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-header">
+      <div>
+        <h1>Kitchen Line</h1>
+        <p>Tickets sorted by priority. The oldest and most-overdue orders sit at the top. One tap advances a ticket.</p>
+      </div>
+      <div class="filter-row" id="channelFilters">
+        <button class="chip active" data-channel="all">All channels</button>
+        <button class="chip" data-channel="dine-in">Dine-in</button>
+        <button class="chip" data-channel="online">Online</button>
+        <button class="chip" data-channel="takeaway">Takeaway</button>
+      </div>
+    </div>
+
+    <div id="tickets" class="ticket-grid"></div>
+  </main>
+
+  <script src="/js/shared.js"></script>
+  <script src="/js/kitchen.js"></script>
+</body>
+</html>
