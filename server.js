@@ -255,14 +255,21 @@ app.get('/api/stats', (req, res) => {
 // -----------------------------------------------------------------------------
 // Boot
 // -----------------------------------------------------------------------------
-server.listen(PORT, () => {
-  console.log(`\n  Restaurant Order Flow Optimizer`);
-  console.log(`  -------------------------------`);
-  console.log(`  HTTP      http://localhost:${PORT}`);
-  console.log(`  WebSocket ws://localhost:${PORT}/ws\n`);
-  console.log(`  Open these in separate tabs to see the flow:`);
-  console.log(`    /order-entry.html   create new orders (any channel)`);
-  console.log(`    /kitchen.html       kitchen display system (KDS)`);
-  console.log(`    /foh.html           front-of-house status board`);
-  console.log(`    /manager.html       live metrics + full order log\n`);
-});
+// Only start the HTTP server when this file is executed directly. When the
+// module is `require()`d from a test, we skip listening so supertest can
+// drive the Express app against an ephemeral port.
+if (require.main === module) {
+  server.listen(PORT, () => {
+    console.log(`\n  Restaurant Order Flow Optimizer`);
+    console.log(`  -------------------------------`);
+    console.log(`  HTTP      http://localhost:${PORT}`);
+    console.log(`  WebSocket ws://localhost:${PORT}/ws\n`);
+    console.log(`  Open these in separate tabs to see the flow:`);
+    console.log(`    /order-entry.html   create new orders (any channel)`);
+    console.log(`    /kitchen.html       kitchen display system (KDS)`);
+    console.log(`    /foh.html           front-of-house status board`);
+    console.log(`    /manager.html       live metrics + full order log\n`);
+  });
+}
+
+module.exports = { app, server };

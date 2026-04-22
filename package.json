@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node --watch server.js"
+    "dev": "node --watch server.js",
+    "test": "node --test test/api.test.js"
   },
   "keywords": [
     "restaurant",
@@ -20,6 +21,9 @@
   "dependencies": {
     "express": "^4.19.2",
     "ws": "^8.17.0"
+  },
+  "devDependencies": {
+    "supertest": "^7.0.0"
   },
   "engines": {
     "node": ">=18.0.0"
