@@ -163,7 +163,13 @@ wss.on('connection', (socket) => {
     try {
       if (msg.type === 'create_order') {
         const order = createOrder(msg.payload);
-        broadcast({ type: 'order_created', order: decorate(order) });
+        const out = { type: 'order_created', order: decorate(order) };
+        // Echo a client-supplied correlation id so the originating tab can
+        // confirm its own submission was accepted (vs. some other client's).
+        if (msg.payload && msg.payload.clientRequestId) {
+          out.clientRequestId = msg.payload.clientRequestId;
+        }
+        broadcast(out);
       } else if (msg.type === 'update_status') {
         const order = updateOrderStatus(msg.id, msg.status);
         broadcast({ type: 'order_updated', order: decorate(order) });
@@ -196,6 +202,16 @@ setInterval(() => {
 // -----------------------------------------------------------------------------
 app.get('/api/orders', (req, res) => {
   const { channel, status } = req.query;
+  if (channel !== undefined && !CHANNELS.includes(channel)) {
+    return res.status(400).json({
+      error: `Invalid channel '${channel}'. Must be one of: ${CHANNELS.join(', ')}.`,
+    });
+  }
+  if (status !== undefined && !STATUSES.includes(status)) {
+    return res.status(400).json({
+      error: `Invalid status '${status}'. Must be one of: ${STATUSES.join(', ')}.`,
+    });
+  }
   let list = [...orders.values()];
   if (channel) list = list.filter((o) => o.channel === channel);
   if (status) list = list.filter((o) => o.status === status);

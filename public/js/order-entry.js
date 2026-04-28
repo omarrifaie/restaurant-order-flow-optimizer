@@ -82,7 +82,21 @@ sampleBtn.addEventListener('click', () => {
   itemsEl.innerHTML = '';
   const picks = [...SAMPLES].sort(() => Math.random() - 0.5).slice(0, 2 + Math.floor(Math.random() * 2));
   picks.forEach((p) => addItem({ ...p, quantity: 1 + Math.floor(Math.random() * 2) }));
+  // Sample = "fill and fire" so a click immediately produces a ticket the
+  // other dashboards can react to.
+  form.requestSubmit();
 });
+
+// Pending submissions waiting on a server ack, keyed by clientRequestId.
+const pending = new Map();
+const ACK_TIMEOUT_MS = 5000;
+
+function makeRequestId() {
+  if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+    return window.crypto.randomUUID();
+  }
+  return 'req-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10);
+}
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -98,15 +112,32 @@ form.addEventListener('submit', (e) => {
     return;
   }
 
+  const clientRequestId = makeRequestId();
   const payload = {
     channel:      channelSel.value,
     tableNumber:  document.getElementById('tableNumber').value.trim() || null,
     customerName: document.getElementById('customerName').value.trim() || null,
     items,
     notes:        document.getElementById('notes').value.trim(),
+    clientRequestId,
   };
 
+  const timeoutId = setTimeout(() => {
+    if (!pending.has(clientRequestId)) return;
+    pending.delete(clientRequestId);
+    toast("Order didn't reach the kitchen — please try again.", { error: true });
+  }, ACK_TIMEOUT_MS);
+
+  pending.set(clientRequestId, { timeoutId });
   socket.send({ type: 'create_order', payload });
+});
+
+socket.on('created', (order) => {
+  const id = order.clientRequestId;
+  if (!id || !pending.has(id)) return;
+  const { timeoutId } = pending.get(id);
+  clearTimeout(timeoutId);
+  pending.delete(id);
   toast('Order sent to the kitchen.');
   form.reset();
   itemsEl.innerHTML = '';
