@@ -69,7 +69,7 @@ function ticketHtml(o) {
         <span class="ticket-timer" data-since="${since}">${fmt.elapsed(since)}</span>
       </header>
       <div class="ticket-meta">
-        <span class="channel-badge ${o.channel === 'dine-in' ? '' : o.channel}">${fmt.channelLabel(o.channel)}</span>
+        <span class="channel-badge ${o.channel}">${fmt.channelLabel(o.channel)}</span>
         <span class="ticket-customer">${fmt.customer(o)}</span>
       </div>
       <ul class="ticket-items">${items}</ul>

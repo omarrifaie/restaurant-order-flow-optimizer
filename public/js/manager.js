@@ -95,7 +95,7 @@ function logRowHtml(o) {
   return `
     <div style="display:grid; grid-template-columns: 90px 110px 1fr 90px 70px; gap: 10px; align-items: center; padding: 10px 12px; background: var(--bg-elev-2); border-radius: var(--radius-sm); border: 1px solid var(--border); font-size: 13px;">
       <span style="font-family: var(--font-mono); font-weight: 700;">${o.id}</span>
-      <span class="channel-badge ${o.channel === 'dine-in' ? '' : o.channel}">${fmt.channelLabel(o.channel)}</span>
+      <span class="channel-badge ${o.channel}">${fmt.channelLabel(o.channel)}</span>
       <span style="color: var(--text-muted);">
         ${fmt.customer(o)} ·
         <span style="color: var(--text-dim);">${o.items.length} item${o.items.length === 1 ? '' : 's'}</span>
