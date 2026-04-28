@@ -60,7 +60,8 @@ into the stream.
 
 ## Running locally
 
-Requires Node.js 18 or newer.
+Requires Node.js 18 or newer. If you use nvm, run `nvm use` to pick up the
+pinned Node version from `.nvmrc`.
 
 ```bash
 cd restaurant-order-flow-optimizer
@@ -79,7 +80,7 @@ so you can see the WebSocket sync in action:
 - `/foh.html` - front of house
 - `/manager.html` - live metrics
 
-Click **Fill sample** on the Order Entry page a few times, then watch
+Click **Add sample order** on the Order Entry page a few times, then watch
 the tickets appear on every other screen instantly.
 
 ---
