@@ -254,6 +254,9 @@ main {
   padding: 10px 16px 4px;
   flex-wrap: wrap;
 }
+/* Base layout for the channel badge. The colour is set per-channel below so
+   every channel — dine-in included — picks up styling from a matching class
+   instead of relying on the bare `.channel-badge` rule. */
 .channel-badge {
   display: inline-flex; align-items: center; gap: 6px;
   font-family: var(--font-mono);
@@ -263,11 +266,12 @@ main {
   text-transform: uppercase;
   padding: 4px 8px;
   border-radius: 4px;
-  background: rgba(76,159,255,0.12);
-  color: var(--channel-dine);
+  background: var(--bg-elev-2);
+  color: var(--text-muted);
 }
-.channel-badge.online  { background: rgba(183,141,255,0.12); color: var(--channel-online); }
-.channel-badge.takeaway { background: rgba(61,220,132,0.12); color: var(--channel-take); }
+.channel-badge.dine-in  { background: rgba(76,159,255,0.12);  color: var(--channel-dine); }
+.channel-badge.online   { background: rgba(183,141,255,0.12); color: var(--channel-online); }
+.channel-badge.takeaway { background: rgba(61,220,132,0.12);  color: var(--channel-take); }
 
 .ticket-customer {
   font-size: 13px;
@@ -317,6 +321,20 @@ main {
   background: var(--bg-elev-2);
 }
 .ticket-actions button { flex: 1; }
+
+/* FOH "Recently cancelled" — informational only, dimmed and struck through. */
+.ticket.ticket-cancelled {
+  opacity: 0.55;
+  border-color: var(--border);
+  box-shadow: none;
+  animation: ticket-in 0.25s ease-out;
+}
+.ticket.ticket-cancelled .ticket-id,
+.ticket.ticket-cancelled .ticket-items .item-name {
+  text-decoration: line-through;
+  text-decoration-color: var(--text-dim);
+}
+.ticket.ticket-cancelled .ticket-timer { color: var(--accent-hot); }
 
 /* --------------------------------------------------------------------------- */
 /* Buttons & form controls                                                     */
